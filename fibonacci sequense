@@ -1,0 +1,5 @@
+function fibonacci(n) {
+    return Array.apply(0, new Array(n)).reduce(function(seq, current, index) {
+        return seq.concat((index < 2) ? index : seq[index-1] + seq[index-2]);
+    }, []);
+}
