@@ -1,0 +1,18 @@
+var fibonacci = function(n){
+	if(n <= 1){
+		return n;
+	}
+	
+	var f1 = 0;
+	var f2 = 1;
+	var f;
+
+	for( var i = 2; i <=n; i++){
+		f = f1 + f2;
+		f1 = f2;
+		f2 = f;
+	}
+	
+	return f;
+
+};
