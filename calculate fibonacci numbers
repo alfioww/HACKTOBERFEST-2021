@@ -1,0 +1,31 @@
+/**
+ * The Fibonacci numbers in JavaScript.
+ *
+ * A cached solution with O(1) lookup for previously-calculated terms and O(N)
+ * lookup for uncalculated ones.
+ *
+ * Because numbers in JavaScript are 64bit, the largest available number is
+ * 1.7976931348623157e+308. The 1476th term is the last that can be calculated.
+ * If a later term is requested, the function will return Infinity.
+ *
+ * See: http://www.hunlock.com/blogs/The_Complete_Javascript_Number_Reference
+ */
+var fib = function(n) {
+    var fibs = {
+        sequence: [0, 1],
+        
+        at: function(index) {
+            if (index > 1476) return Infinity;
+            if (!this.sequence[index]) this.updateTo(index);
+            return this.sequence[index];
+        },
+        
+        updateTo: function(limit) {
+            for (var i = this.sequence.length; i <= limit; i++) {
+                this.sequence[i] = this.sequence[i - 1] + this.sequence[i - 2];
+            }
+        }
+    };
+    
+    return fibs.at(n);
+};
